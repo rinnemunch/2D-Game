@@ -46,5 +46,14 @@ public class Player : MonoBehaviour
         //else if player on the x is less than -11 
         //x pos = 11 
 
+        if (transform.position.x > 11.3f)
+        {
+            transform.position = new Vector3(11.3f, transform.position.y, 0);
+        }
+        else if (transform.position.x < -11.3f)
+        {
+            transform.position = new Vector3(11.3f, transform.position.y, 0); 
+        }
+
     }
 }
