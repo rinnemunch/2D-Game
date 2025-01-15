@@ -51,6 +51,11 @@ public class Player : MonoBehaviour
         else if (transform.position.x < -11.3f)
         {
             transform.position = new Vector3(11.3f, transform.position.y, 0);
-        }
+        } 
+    }
+    void FireLaser()
+    {
+        _canFire = Time.time + _fireRate;
+        Instantiate(_laserPrefab, transform.position + new Vector3(0, 0.8f, 0), Quaternion.identity);
     }
 }
