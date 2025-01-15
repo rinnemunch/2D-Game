@@ -6,6 +6,11 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     private float _speed = 3.5f;
+    [SerializeField]
+    private GameObject _laserPrefab;
+    [SerializeField]
+    private float _fireRate = 0.5f;
+    private float _canFire = -1f; 
 
 
 
@@ -18,9 +23,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-   
-        CalculateMovement();    
+        CalculateMovement();
+
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
+        {
+            FireLaser();
+        }
+
     }
+
     void CalculateMovement()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
