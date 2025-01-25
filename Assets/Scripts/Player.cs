@@ -25,18 +25,32 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject _shieldVisualizer;
 
+    [SerializeField]
+    private int _score;
 
-
+    [SerializeField]
+    private UIManager _uiManager;
 
     // Start is called before the first frame update
     void Start()
     {
         transform.position = new Vector3(0, 0, 0);
-        _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
+        _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>(); 
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
 
         if (_spawnManager == null)
         {
             Debug.LogError("The Spawn Manager is NULL.");
+        }
+
+        if (_spawnManager == null)
+        {
+            Debug.LogError("The Spawn Manager is NULL.");
+        }
+
+        if (_uiManager == null)
+        {
+            Debug.LogError("The UI Manager is NULL.");
         }
     }
 
@@ -57,18 +71,12 @@ public class Player : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-
         Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
 
-        //if speedboostactive is false 
-        //else speed boost multiplier
+        // Check if the speed boost is active and adjust speed accordingly
+        float currentSpeed = _isSpeedBoostActive ? _speed * _speedMultiplier : _speed;
 
-       
-        transform.Translate(direction * _speed * Time.deltaTime);
-        
-     
-
-
+        transform.Translate(direction * currentSpeed * Time.deltaTime);
 
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -3.8f, 0), 0);
 
@@ -81,6 +89,7 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(11.3f, transform.position.y, 0);
         }
     }
+
     void FireLaser()
     {
         _canFire = Time.time + _fireRate;
@@ -149,4 +158,17 @@ public class Player : MonoBehaviour
         _isShieldsActive = true;
         _shieldVisualizer.SetActive(true); 
     }
+
+    public void AddScore(int points)
+    {
+        _score += 10;
+
+        if (_uiManager != null)
+        {
+            _uiManager.UpdateScore(_score);
+        }
+    }
+
+    //method to add 10 to the score!
+    //commmunicate with the ui manager
 }
