@@ -18,10 +18,9 @@ public class Player : MonoBehaviour
     private int _lives = 3;
     private SpawnManager _spawnManager;
 
-    [SerializeField]
     private bool _isTripleShotActive = false;
-    [SerializeField] 
     private bool _isSpeedBoostActive = false;
+    private bool _isShieldsActive = false;
 
 
 
@@ -96,6 +95,16 @@ public class Player : MonoBehaviour
 
     public void Damage()
     {
+        //if shields is active 
+        //do nothing...
+        //deactivate shields
+        //return; 
+        if (_isShieldsActive == true)
+        {
+            _isShieldsActive = false;
+            return; 
+        } 
+
         _lives--;
 
         if (_lives < 1)
@@ -129,5 +138,10 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(5.0f); 
         _isSpeedBoostActive = false; 
         _speed /= _speedMultiplier;
+    }
+
+    public void ShieldsActive()
+    {
+        _isShieldsActive = true;   
     }
 }
