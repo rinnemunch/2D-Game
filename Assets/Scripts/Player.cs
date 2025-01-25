@@ -22,6 +22,9 @@ public class Player : MonoBehaviour
     private bool _isSpeedBoostActive = false;
     private bool _isShieldsActive = false;
 
+    [SerializeField]
+    private GameObject _shieldVisualizer;
+
 
 
 
@@ -102,6 +105,7 @@ public class Player : MonoBehaviour
         if (_isShieldsActive == true)
         {
             _isShieldsActive = false;
+            _shieldVisualizer.SetActive(false); 
             return; 
         } 
 
@@ -142,6 +146,7 @@ public class Player : MonoBehaviour
 
     public void ShieldsActive()
     {
-        _isShieldsActive = true;   
+        _isShieldsActive = true;
+        _shieldVisualizer.SetActive(true); 
     }
 }
