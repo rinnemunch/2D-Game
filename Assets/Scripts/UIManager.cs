@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
         _gameOverText.gameObject.SetActive(false);
         _gameManager = GameObject.Find("Game_Manager").GetComponent<GameManager>();   
 
-        if (_gameManager != null )
+        if (_gameManager == null )
         {
             Debug.LogError("GameManager is NULL.");
         }
