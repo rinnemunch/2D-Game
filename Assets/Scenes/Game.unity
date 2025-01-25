@@ -1049,6 +1049,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.225598, y: 4.172799}
   m_EdgeRadius: 0
+--- !u!1 &1238530309 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5526450809655339373, guid: 701623140aae5b441aeb8ecfcb28653b,
+    type: 3}
+  m_PrefabInstance: {fileID: 7927736347463871427}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1238530310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238530309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce378427480823f4bbdd4f5c7928c92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotateSpeed: 19.13
 --- !u!1 &1425426177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,3 +1254,92 @@ Transform:
   m_Father: {fileID: 453788739}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &7927736347463871427
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1349010278747569321, guid: 701623140aae5b441aeb8ecfcb28653b,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.3167892
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349010278747569321, guid: 701623140aae5b441aeb8ecfcb28653b,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.011417932
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349010278747569321, guid: 701623140aae5b441aeb8ecfcb28653b,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.12139611
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325496338751635127, guid: 701623140aae5b441aeb8ecfcb28653b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325496338751635127, guid: 701623140aae5b441aeb8ecfcb28653b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325496338751635127, guid: 701623140aae5b441aeb8ecfcb28653b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325496338751635127, guid: 701623140aae5b441aeb8ecfcb28653b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325496338751635127, guid: 701623140aae5b441aeb8ecfcb28653b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.94457716
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325496338751635127, guid: 701623140aae5b441aeb8ecfcb28653b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325496338751635127, guid: 701623140aae5b441aeb8ecfcb28653b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325496338751635127, guid: 701623140aae5b441aeb8ecfcb28653b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.3282896
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325496338751635127, guid: 701623140aae5b441aeb8ecfcb28653b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325496338751635127, guid: 701623140aae5b441aeb8ecfcb28653b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325496338751635127, guid: 701623140aae5b441aeb8ecfcb28653b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -38.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 5526450809655339373, guid: 701623140aae5b441aeb8ecfcb28653b,
+        type: 3}
+      propertyPath: m_Name
+      value: Asteroid
+      objectReference: {fileID: 0}
+    - target: {fileID: 8847917301124192615, guid: 701623140aae5b441aeb8ecfcb28653b,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 701623140aae5b441aeb8ecfcb28653b, type: 3}
