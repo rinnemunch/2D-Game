@@ -1068,6 +1068,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotateSpeed: 19.13
+  _explosionPrefab: {fileID: 1157296284595513588, guid: 86013610cf3505648ae5d8f14d30098e,
+    type: 3}
 --- !u!1 &1425426177
 GameObject:
   m_ObjectHideFlags: 0
