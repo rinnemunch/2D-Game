@@ -46,10 +46,13 @@ public class Enemy : MonoBehaviour
 
             Vector3 laserSpawnPosition = new Vector3(transform.position.x, 5.1f, transform.position.z);
 
-
-
             GameObject enemyLaser = Instantiate(_laserPrefab, laserSpawnPosition, Quaternion.identity);
-            Debug.Break();
+            Laser[] lasers = enemyLaser.GetComponentsInChildren<Laser>();  
+            
+            for (int i = 0; i < lasers.Length; i++)
+            {
+                lasers[i].AssignEnemyLaser();
+            }
         }
     }
 
