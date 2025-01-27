@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     private float _fireRate = 3.0f;
     private float _canFire = -1;
 
-    // New boolean to track if the enemy is destroyed
+    
     private bool _isDestroyed = false;
 
     // Start is called before the first frame update
@@ -37,12 +37,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (_isDestroyed)
         {
-            return; // Prevent further actions if the enemy is destroyed
+            return; 
         }
 
         CalculateMovement();
@@ -52,14 +52,21 @@ public class Enemy : MonoBehaviour
             _fireRate = Random.Range(3f, 7f);
             _canFire = Time.time + _fireRate;
 
-            Vector3 laserSpawnPosition = new Vector3(transform.position.x, 5.1f, transform.position.z);
-
+            Vector3 laserSpawnPosition = transform.position + Vector3.down * 0.5f;
             GameObject enemyLaser = Instantiate(_laserPrefab, laserSpawnPosition, Quaternion.identity);
-            Laser[] lasers = enemyLaser.GetComponentsInChildren<Laser>();
 
-            for (int i = 0; i < lasers.Length; i++)
+            // Set tag for parent and all children
+            enemyLaser.tag = "EnemyLaser";
+            foreach (Transform child in enemyLaser.transform)
             {
-                lasers[i].AssignEnemyLaser();
+                child.tag = "EnemyLaser";
+            }
+
+            // Get and configure all laser components
+            Laser[] lasers = enemyLaser.GetComponentsInChildren<Laser>();
+            foreach (Laser laser in lasers)
+            {
+                laser.AssignEnemyLaser();
             }
         }
     }
@@ -77,27 +84,28 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        // Add this check first - if it's an enemy laser, ignore the collision completely
+        if (other.CompareTag("EnemyLaser"))
+        {
+            return;
+        }
+
+        if (other.CompareTag("Player"))
         {
             Player player = other.transform.GetComponent<Player>();
-
             if (player != null)
             {
                 player.Damage();
             }
-
             HandleEnemyDestruction();
         }
-
-        if (other.tag == "Laser")
+        if (other.CompareTag("Laser"))
         {
             Destroy(other.gameObject);
-
             if (_player != null)
             {
                 _player.AddScore(10);
             }
-
             HandleEnemyDestruction();
         }
     }

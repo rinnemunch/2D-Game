@@ -61,13 +61,27 @@ public class Laser : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player" && _isEnemyLaser == true)
+        // If this is an enemy laser
+        if (_isEnemyLaser)
         {
-            Player player = other.GetComponent<Player>();
-
-            if (player != null)
+            // Only collide with player
+            if (other.tag == "Player")
             {
-                player.Damage(); 
+                Player player = other.GetComponent<Player>();
+                if (player != null)
+                {
+                    player.Damage();
+                }
+                Destroy(gameObject);  // Destroy laser after hitting player
+            }
+        }
+        // If this is a player laser
+        else
+        {
+            // Handle player laser collisions if needed
+            if (other.tag == "Enemy")
+            {
+                Destroy(gameObject);  // Destroy laser after hitting enemy
             }
         }
     }

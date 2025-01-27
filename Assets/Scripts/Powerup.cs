@@ -12,7 +12,7 @@ public class Powerup : MonoBehaviour
     private AudioClip _clip;
 
 
-    // Update is called once per frame
+ 
     void Update()
     {
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
