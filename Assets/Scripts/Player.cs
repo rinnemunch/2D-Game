@@ -37,6 +37,9 @@ public class Player : MonoBehaviour
     
     private AudioSource _audioSource;
 
+    private float _horizontalInput;
+    private float _verticalInput;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,10 +87,10 @@ public class Player : MonoBehaviour
 
     void CalculateMovement()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        _horizontalInput = Input.GetAxis("Horizontal");
+        _verticalInput = Input.GetAxis("Vertical");
 
-        Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
+        Vector3 direction = new Vector3(_horizontalInput, _verticalInput, 0);
 
         // Check if the speed boost is active and adjust speed accordingly
         float currentSpeed = _isSpeedBoostActive ? _speed * _speedMultiplier : _speed;

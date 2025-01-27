@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
             Vector3 laserSpawnPosition = transform.position + Vector3.down * 0.5f;
             GameObject enemyLaser = Instantiate(_laserPrefab, laserSpawnPosition, Quaternion.identity);
 
-            // Set tag for parent and all children
+            // Set tag for parent and all children (laser prefab)
             enemyLaser.tag = "EnemyLaser";
             foreach (Transform child in enemyLaser.transform)
             {
@@ -84,7 +84,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Add this check first - if it's an enemy laser, ignore the collision completely
+        // return will cause the enemylaser tag to not collide with enemy
         if (other.CompareTag("EnemyLaser"))
         {
             return;
@@ -110,15 +110,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // Stops the enemy from firing and plays death animations
+    
     private void HandleEnemyDestruction()
     {
-        _isDestroyed = true; // Mark the enemy as destroyed
+        _isDestroyed = true;
         _anim.SetTrigger("OnEnemyDeath");
         _speed = 0;
         _audioSource.Play();
-        Destroy(GetComponent<Collider2D>()); // Prevent further collisions
-        Destroy(this.gameObject, 2.8f); // Destroy after animation
+        Destroy(GetComponent<Collider2D>()); 
+        Destroy(this.gameObject, 2.8f); 
     }
 
 }
