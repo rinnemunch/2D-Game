@@ -58,4 +58,17 @@ public class Laser : MonoBehaviour
     {
         _isEnemyLaser = true;
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player" && _isEnemyLaser == true)
+        {
+            Player player = other.GetComponent<Player>();
+
+            if (player != null)
+            {
+                player.Damage(); 
+            }
+        }
+    }
 }
